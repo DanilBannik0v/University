@@ -7,7 +7,10 @@ public enum StudyProfile {
     BUSINESSINFORMATICS("Бизнесс информатика"),
     TOURISM("Туризм"),
     HOTELBUSINESS("Гостиничное дело"),
-    MEDICINE("Медицина");
+    MEDICINE("Медицина"),
+    LINGUISTICS("Лингвистика"),
+    PHYSICS("Физика"),
+    MATHEMATICS("Математика");
 
     private String profileName;
 
