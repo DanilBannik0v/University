@@ -75,4 +75,55 @@ public class ExcelFileReader {
         }
         return universityList;
     }
+
+    public static List<Student> readExcelStudentsData(String fileName) {
+        List<Student> studentList = new ArrayList<>();
+        try {
+            FileInputStream fis = new FileInputStream(fileName);
+            Workbook workbook = null;
+            if(fileName.toLowerCase().endsWith("xlsx")){
+                workbook = new XSSFWorkbook(fis);
+            }else if(fileName.toLowerCase().endsWith("xls")){
+                workbook = new HSSFWorkbook(fis);
+            }
+            Sheet sheet = workbook.getSheetAt(STUDENTS_SHEET_NUMBER);
+
+            Iterator<Row> rowIterator = sheet.iterator();
+            rowIterator.next();
+            while (rowIterator.hasNext()) {
+                String fullName = "";
+                String universityId =  "";
+                int currentCourseNumber = 0;
+                float avgExamScore = 0;
+
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell cell = cellIterator.next();
+                    switch (cell.getCellType()) {
+                        case STRING -> {
+                            if (universityId.equalsIgnoreCase("")) {
+                                universityId = cell.getStringCellValue().trim();
+                            } else if (fullName.equalsIgnoreCase("")) {
+                                fullName = cell.getStringCellValue().trim();
+                            }
+                        }
+                        case NUMERIC -> {
+                            if (currentCourseNumber == 0) {
+                                currentCourseNumber = (int) cell.getNumericCellValue();
+                            } else if (avgExamScore == 0) {
+                                avgExamScore = (float) cell.getNumericCellValue();
+                            }
+                        }
+                    }
+                }
+                Student student = new Student.StudentBuilder( fullName, universityId, currentCourseNumber, avgExamScore).build();
+                studentList.add(student);
+            }
+            fis.close();
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return studentList;
+    }
 }

@@ -5,9 +5,14 @@ import static org.example.ExcelFileReader.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<University> list = readExcelUniversityData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
-        for (University university: list) {
+        List<University> universityListlist = readExcelUniversityData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
+        for (University university: universityListlist) {
             System.out.println(university);
+        }
+        System.out.println("--------------------------------------------------");
+        List<Student> studentListt = readExcelStudentsData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
+        for (Student student: studentListt) {
+            System.out.println(student);
         }
     }
 }
