@@ -28,8 +28,6 @@ public enum StudyProfile {
 
     @Override
     public String toString() {
-        return "StudyProfile{" +
-                "profileName='" + profileName + '\'' +
-                '}';
+        return '\''+ profileName + '\'';
     }
 }

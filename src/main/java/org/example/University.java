@@ -7,8 +7,8 @@ public class University {
     private String address;       // optional
     private int numberOfStudents; // optional
     private int yearOfFoundation;
-    private String studyProfile;
-    private String mainProfile;
+    private StudyProfile studyProfile;
+    private StudyProfile mainProfile;
 
     private University(UniversityBuilder universityBuilder) {
         ID = universityBuilder.ID;
@@ -45,11 +45,11 @@ public class University {
         return yearOfFoundation;
     }
 
-    public String getStudyProfile() {
+    public StudyProfile getStudyProfile() {
         return studyProfile;
     }
 
-    public String getMainProfile() {
+    public StudyProfile getMainProfile() {
         return mainProfile;
     }
 
@@ -74,10 +74,10 @@ public class University {
         private String address;
         private int numberOfStudents;
         private int yearOfFoundation;
-        private String studyProfile;
-        private String mainProfile;
+        private StudyProfile studyProfile;
+        private StudyProfile mainProfile;
 
-        public UniversityBuilder(String ID, String fullName, String shortName, int yearOfFoundation,String studyProfile,String mainProfile) {
+        public UniversityBuilder(String ID, String fullName, String shortName, int yearOfFoundation,StudyProfile studyProfile,StudyProfile mainProfile) {
             this.ID = ID;
             this.fullName = fullName;
             this.shortName = shortName;

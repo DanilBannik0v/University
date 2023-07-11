@@ -39,8 +39,8 @@ public class ExcelFileReader {
                 String fullName = "";
                 String shortName =  "";
                 int yearOfFoundation = 0;
-                String studyProfile = "";
-                String mainProfile = "";
+                StudyProfile studyProfile = null;
+                StudyProfile mainProfile = null;
 
                 //Every row has columns, get the column iterator and iterate over them
                 Row row = rowIterator.next();
@@ -58,8 +58,8 @@ public class ExcelFileReader {
                                 fullName = cell.getStringCellValue().trim();
                             } else if (shortName.equalsIgnoreCase("")) {
                                 shortName = cell.getStringCellValue().trim();
-                            } else if (studyProfile.equalsIgnoreCase("")) {
-                                studyProfile = cell.getStringCellValue().trim();
+                            } else if (studyProfile == null) {
+                                studyProfile = StudyProfile.valueOf(cell.getStringCellValue().trim().toUpperCase());
                                 mainProfile = studyProfile;
                             }
                         }

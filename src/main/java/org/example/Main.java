@@ -10,8 +10,8 @@ public class Main {
             System.out.println(university);
         }
         System.out.println("--------------------------------------------------");
-        List<Student> studentListt = readExcelStudentsData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
-        for (Student student: studentListt) {
+        List<Student> studentList = readExcelStudentsData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
+        for (Student student: studentList) {
             System.out.println(student);
         }
     }
