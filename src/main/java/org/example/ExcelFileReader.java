@@ -10,8 +10,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
-
 public class ExcelFileReader {
 
     private static final int STUDENTS_SHEET_NUMBER = 0;

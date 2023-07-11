@@ -4,8 +4,8 @@ public class University {
     private String ID;
     private String fullName;
     private String shortName;
-    private String address;       // optional
-    private int numberOfStudents; // optional
+    private String address;
+    private int numberOfStudents;
     private int yearOfFoundation;
     private StudyProfile studyProfile;
     private StudyProfile mainProfile;
