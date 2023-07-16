@@ -27,5 +27,4 @@ public class Utility {
             case STUDY_PROFILE -> new UniversityStudyProfileComparator();
         };
     }
-
 }

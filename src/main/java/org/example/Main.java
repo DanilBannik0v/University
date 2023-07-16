@@ -25,6 +25,5 @@ public class Main {
         universityList.stream().sorted(universityComparator).forEach(System.out::println);
         System.out.println("-----------------------------------------------------");
         studentList.stream().sorted(studentComparator).forEach(System.out::println);
-
     }
 }
