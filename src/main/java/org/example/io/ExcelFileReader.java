@@ -1,4 +1,4 @@
-package org.example;
+package org.example.io;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,6 +9,9 @@ import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.example.enums.StudyProfile;
+import org.example.models.Student;
+import org.example.models.University;
 
 public class ExcelFileReader {
 

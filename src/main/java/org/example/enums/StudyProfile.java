@@ -1,12 +1,12 @@
-package org.example;
+package org.example.enums;
 
 public enum StudyProfile {
-    INFORMATIONSYSTEMSADMINISTRATION("Администированрие информационных систем"),
+    INFORMATION_SYSTEMS_ADMINISTRATION("Администированрие информационных систем"),
     IT("Информатика"),
     ECONOMY("Экономика"),
-    BUSINESSINFORMATICS("Бизнесс информатика"),
+    BUSINESS_INFORMATICS("Бизнесс информатика"),
     TOURISM("Туризм"),
-    HOTELBUSINESS("Гостиничное дело"),
+    HOTEL_BUSINESS("Гостиничное дело"),
     MEDICINE("Медицина"),
     LINGUISTICS("Лингвистика"),
     PHYSICS("Физика"),

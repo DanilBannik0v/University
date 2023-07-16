@@ -1,4 +1,6 @@
-package org.example;
+package org.example.models;
+
+import org.example.enums.StudyProfile;
 
 public class University {
     private String ID;
@@ -41,7 +43,7 @@ public class University {
         return numberOfStudents;
     }
 
-    public float getYearOfFoundation() {
+    public int getYearOfFoundation() {
         return yearOfFoundation;
     }
 
@@ -77,7 +79,7 @@ public class University {
         private StudyProfile studyProfile;
         private StudyProfile mainProfile;
 
-        public UniversityBuilder(String ID, String fullName, String shortName, int yearOfFoundation,StudyProfile studyProfile,StudyProfile mainProfile) {
+        public UniversityBuilder(String ID, String fullName, String shortName, int yearOfFoundation, StudyProfile studyProfile, StudyProfile mainProfile) {
             this.ID = ID;
             this.fullName = fullName;
             this.shortName = shortName;
