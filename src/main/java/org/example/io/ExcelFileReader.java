@@ -1,7 +1,7 @@
 package org.example.io;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,16 +21,16 @@ public class ExcelFileReader {
     public static List<University> readExcelUniversityData(String fileName) {
         List<University> universityList = new ArrayList<>();
         try {
-            FileInputStream fis = new FileInputStream(fileName);
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream is = classloader.getResourceAsStream(fileName);
             Workbook workbook = null;
             if(fileName.toLowerCase().endsWith("xlsx")){
-                workbook = new XSSFWorkbook(fis);
+                workbook = new XSSFWorkbook(is);
             }else if(fileName.toLowerCase().endsWith("xls")){
-                workbook = new HSSFWorkbook(fis);
+                workbook = new HSSFWorkbook(is);
             }
             Sheet sheet = workbook.getSheetAt(UNIVERSITY_SHEET_NUMBER);
 
-            //every sheet has rows, iterate over them
             Iterator<Row> rowIterator = sheet.iterator();
             //skip row with column names
             rowIterator.next();
@@ -43,7 +43,6 @@ public class ExcelFileReader {
                 StudyProfile studyProfile = null;
                 StudyProfile mainProfile = null;
 
-                //Every row has columns, get the column iterator and iterate over them
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
 
@@ -70,7 +69,7 @@ public class ExcelFileReader {
                 University university = new University.UniversityBuilder(ID, fullName, shortName, yearOfFoundation, studyProfile, mainProfile).build();
                 universityList.add(university);
             }
-        fis.close();
+        is.close();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
@@ -80,12 +79,13 @@ public class ExcelFileReader {
     public static List<Student> readExcelStudentsData(String fileName) {
         List<Student> studentList = new ArrayList<>();
         try {
-            FileInputStream fis = new FileInputStream(fileName);
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream is = classloader.getResourceAsStream(fileName);
             Workbook workbook = null;
             if(fileName.toLowerCase().endsWith("xlsx")){
-                workbook = new XSSFWorkbook(fis);
+                workbook = new XSSFWorkbook(is);
             }else if(fileName.toLowerCase().endsWith("xls")){
-                workbook = new HSSFWorkbook(fis);
+                workbook = new HSSFWorkbook(is);
             }
             Sheet sheet = workbook.getSheetAt(STUDENTS_SHEET_NUMBER);
 
@@ -121,7 +121,7 @@ public class ExcelFileReader {
                 Student student = new Student.StudentBuilder( fullName, universityId, currentCourseNumber, avgExamScore).build();
                 studentList.add(student);
             }
-            fis.close();
+            is.close();
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }

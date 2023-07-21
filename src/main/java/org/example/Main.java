@@ -16,8 +16,8 @@ import static org.example.utility.Utility.getUniversityComparator;
 
 public class Main {
     public static void main(String[] args) {
-        List<University> universityList = readExcelUniversityData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
-        List<Student> studentList = readExcelStudentsData("D:\\JavaProgramming\\Projects\\University\\target\\classes\\universityInfo.xlsx");
+        List<University> universityList = readExcelUniversityData("universityInfo.xlsx");
+        List<Student> studentList = readExcelStudentsData("universityInfo.xlsx");
 
         UniversityComparator universityComparator = getUniversityComparator(UniversityComparatorType.SHORT_NAME);
         StudentComparator studentComparator = getStudentComparator(StudentComparatorType.FULL_NAME);
