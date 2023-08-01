@@ -1,7 +1,6 @@
 package org.example;
 
-import org.example.enums.StudyProfile;
-import org.example.jsonutil.JsonUtil;
+import org.example.models.Statistics;
 import org.example.models.Student;
 import org.example.models.University;
 
@@ -10,8 +9,9 @@ import java.util.List;
 import static org.example.enums.StudyProfile.*;
 import static org.example.io.ExcelFileReader.readExcelStudentsData;
 import static org.example.io.ExcelFileReader.readExcelUniversityData;
+import static org.example.io.ExcelFileWriter.writeExcelStatistics;
 import static org.example.jsonutil.JsonUtil.*;
-
+import static org.example.utility.StatisticsUtility.createStatistics;
 
 public class Main {
     public static void main(String[] args) {
@@ -37,5 +37,8 @@ public class Main {
                     University university  = jsonToUniversity(json);
                     System.out.println(university);
                 });
+
+        List<Statistics> statisticsList = createStatistics(universityList, studentList);
+        writeExcelStatistics(statisticsList,"statistics.xlsx");
     }
 }
