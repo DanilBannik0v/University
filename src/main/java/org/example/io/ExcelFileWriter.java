@@ -8,10 +8,14 @@ import org.example.models.Statistics;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ExcelFileWriter {
+    private static final Logger logger = Logger.getLogger(ExcelFileWriter.class.getName());
 
     public static void writeExcelStatistics(List<Statistics> statisticsList, String fileName) {
+        logger.log(Level.INFO, "Excel writing started");
         Workbook workbook = null;
         if(fileName.toLowerCase().endsWith("xlsx")){
             workbook = new XSSFWorkbook();
@@ -61,11 +65,12 @@ public class ExcelFileWriter {
         }
 
         try {
+            logger.log(Level.WARNING, "Writing data to a file");
             FileOutputStream outputStream = new FileOutputStream(fileName);
             workbook.write(outputStream);
             workbook.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Excel writing failed");
         }
     }
 }

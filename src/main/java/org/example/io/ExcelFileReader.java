@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -14,13 +16,14 @@ import org.example.models.Student;
 import org.example.models.University;
 
 public class ExcelFileReader {
-
+    private static Logger logger = Logger.getLogger(ExcelFileReader.class.getName());
     private static final int STUDENTS_SHEET_NUMBER = 0;
     private static final int UNIVERSITY_SHEET_NUMBER = 1;
 
-    public static List<University> readExcelUniversityData(String fileName) {
+    public static final List<University> readExcelUniversityData(String fileName) {
         List<University> universityList = new ArrayList<>();
         try {
+            logger.log(Level.INFO, "Excel reading started");
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
             InputStream is = classloader.getResourceAsStream(fileName);
             Workbook workbook = null;
@@ -71,14 +74,16 @@ public class ExcelFileReader {
             }
         is.close();
         } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Excel reading failed");
         }
+        logger.log(Level.INFO, "Excel reading finished");
         return universityList;
     }
 
     public static List<Student> readExcelStudentsData(String fileName) {
         List<Student> studentList = new ArrayList<>();
         try {
+            logger.log(Level.INFO, "Excel reading started");
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
             InputStream is = classloader.getResourceAsStream(fileName);
             Workbook workbook = null;
@@ -123,8 +128,9 @@ public class ExcelFileReader {
             }
             is.close();
         } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Excel reading failed");
         }
+        logger.log(Level.INFO, "Excel reading finished");
         return studentList;
     }
 }

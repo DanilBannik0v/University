@@ -11,10 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class StatisticsUtility {
+        private static final Logger logger = Logger.getLogger(StatisticsUtility.class.getName());
+
     public static List<Statistics> createStatistics(List<University> universityList, List<Student> studentList) {
+        logger.log(Level.INFO, "Creating statistics started");
+
         List<Statistics> statisticsList = new ArrayList<>();
 
         Set<StudyProfile> profiles = universityList.stream()
@@ -52,6 +58,7 @@ public class StatisticsUtility {
 
             statisticsList.add(statistics);
         });
+        logger.log(Level.INFO, "Creating statistics finished");
         return statisticsList;
     }
 }
