@@ -6,7 +6,6 @@ import org.example.enums.StudyProfile;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "universityEntry")
 public class University {
     @SerializedName("id")
     @XmlElement(name = "universityId")

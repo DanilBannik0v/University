@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "studentEntry")
 public class Student {
     @SerializedName("name")
     @XmlElement(name = "studentName")
