@@ -2,7 +2,6 @@ package org.example.jsonutil;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import org.example.models.Student;
 import org.example.models.University;
@@ -29,19 +28,12 @@ public class JsonUtil {
         return new Gson().fromJson(json, University.class);
     }
 
-    public static String studentListToJson(List<Student> studentList){
-        return new GsonBuilder().setPrettyPrinting().create().toJson(studentList);
+    public static String listToJson(List<?> list){
+        return new GsonBuilder().setPrettyPrinting().create().toJson(list);
     }
 
-    public static String universityListToJson(List<University> universityList){
-        return new GsonBuilder().setPrettyPrinting().create().toJson(universityList);
+    public static List<?> jsonToList(String json){
+        return new Gson().fromJson(json, new TypeToken<List<?>>(){}.getType());
     }
 
-    public static List<Student> jsonToStudentList(String json){
-        return new Gson().fromJson(json, new TypeToken<List<Student>>(){}.getType());
-    }
-
-    public static List<University> jsonToUniversityList(String json){
-        return new Gson().fromJson(json, new TypeToken<List<University>>(){}.getType());
-    }
 }

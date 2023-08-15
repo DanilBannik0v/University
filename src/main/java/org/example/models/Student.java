@@ -2,19 +2,37 @@ package org.example.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "studentEntry")
 public class Student {
     @SerializedName("name")
+    @XmlElement(name = "studentName")
     private String fullName;
+
     @SerializedName("universityId")
+    @XmlElement(name = "universityId")
     private String universityId;
+
     @SerializedName("phone")
+    @XmlTransient
     private String phone;
+
     @SerializedName("email")
+    @XmlTransient
     private String email;
+
     @SerializedName("course")
+    @XmlTransient
     private int currentCourseNumber;
+
     @SerializedName("avgScore")
+    @XmlElement(name = "avgScore")
     private float avgExamScore;
+
+    public Student() {
+    }
 
     private Student(StudentBuilder studentBuilder) {
         fullName = studentBuilder.fullName;
@@ -67,6 +85,9 @@ public class Student {
         private String email;
         private int currentCourseNumber;
         private float avgExamScore;
+
+        public StudentBuilder() {
+        }
 
         public StudentBuilder(String fullName, String universityId, int currentCourseNumber, float avgExamScore) {
             this.fullName = fullName;
