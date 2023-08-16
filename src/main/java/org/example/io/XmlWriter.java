@@ -22,13 +22,13 @@ public class XmlWriter {
     public static void writeXmlFile(Info info){
         logger.log(Level.INFO, "XML marshalling started");
         try {
-            Files.createDirectory(Paths.get("D:\\JavaProgramming\\Projects\\University\\src\\xmlReqs"));
+            Files.createDirectory(Paths.get("target\\xmlReqs"));
             logger.log(Level.INFO, "Directory created successfully");
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Directory already created");
         }
 
-        File file = new File("D:\\JavaProgramming\\Projects\\University\\src\\xmlReqs\\req" + new Date().getTime() + ".xml");
+        File file = new File("target\\xmlReqs\\req" + new Date().getTime() + ".xml");
         JAXBContext context;
         Marshaller marshaller;
         try {

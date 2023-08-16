@@ -21,7 +21,7 @@ public class JsonWriter {
     public static void writeJsonReq(Info info) {
         logger.log(Level.INFO, "JSON writing started");
         try {
-            Files.createDirectory(Paths.get("D:\\JavaProgramming\\Projects\\University\\src\\jsonReqs"));
+            Files.createDirectories(Paths.get("target\\jsonReqs"));
             logger.log(Level.INFO, "Directory created");
         } catch (IOException ioEx) {
             logger.log(Level.FINE, "Directory already created", ioEx);
@@ -34,9 +34,7 @@ public class JsonWriter {
 
     private static void writeStudents(Info info) {
         String studentsJson = listToJson(info.getStudentList());
-        String path = "D:\\JavaProgramming\\Projects\\University\\src\\jsonReqs\\students";
-
-        try(FileOutputStream outputStream = new FileOutputStream(path + info.getCreationDate().getTime() + ".json")) {
+        try(FileOutputStream outputStream = new FileOutputStream("target\\jsonReqs\\students" + info.getCreationDate().getTime() + ".json")) {
             outputStream.write(studentsJson.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Students JSON writing failed", e);
@@ -45,9 +43,7 @@ public class JsonWriter {
 
     private static void writeUniversities(Info info) {
         String universitiesJson = listToJson(info.getUniversityList());
-        String path = "D:\\JavaProgramming\\Projects\\University\\src\\jsonReqs\\universities";
-
-        try(FileOutputStream outputStream = new FileOutputStream(path + info.getCreationDate().getTime() + ".json")) {
+        try(FileOutputStream outputStream = new FileOutputStream("target\\jsonReqs\\universities" + info.getCreationDate().getTime() + ".json")) {
             outputStream.write(universitiesJson.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Universities JSON writing failed", e);
@@ -56,9 +52,7 @@ public class JsonWriter {
 
     private static void writeStatisticsList(Info info) {
         String statisticsList = listToJson(info.getStatisticsList());
-        String path = "D:\\JavaProgramming\\Projects\\University\\src\\jsonReqs\\statistics";
-
-        try(FileOutputStream outputStream = new FileOutputStream(path + info.getCreationDate().getTime() + ".json")) {
+        try(FileOutputStream outputStream = new FileOutputStream("target\\jsonReqs\\statistics" + info.getCreationDate().getTime() + ".json")) {
             outputStream.write(statisticsList.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Statistics JSON writing failed", e);

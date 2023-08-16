@@ -26,9 +26,8 @@ public class Main {
         try {
             LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/logging.properties"));
         } catch (IOException e) {
-            System.err.println("Could not setup logger configuration: " + e);
+            System.err.println("Could not set up logger configuration: " + e);
         }
-
         logger.log(Level.INFO,"Application started");
         List<University> universityList = readExcelUniversityData("universityInfo.xlsx");
         List<Student> studentList = readExcelStudentsData("universityInfo.xlsx");
